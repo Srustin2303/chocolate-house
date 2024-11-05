@@ -1,0 +1,8 @@
+Flask==2.0.2
+sqlite3
+Flask: This is the main framework for your web application.
+sqlite3: This is included with Python's standard library, so usually don't need to install it separately. When we want to install the required packages, we can run:
+
+bash
+Copy code
+pip install -r requirements.txt

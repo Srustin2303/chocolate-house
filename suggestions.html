@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chocolate House - Customer Suggestions</title>
+</head>
+<body>
+    <h1>Customer Suggestions</h1>
+    <form method="POST" action="{{ url_for('add_suggestion') }}">
+        <input type="text" name="customer_name" placeholder="Customer Name" required>
+        <input type="text" name="flavor_suggestion" placeholder="Flavor Suggestion" required>
+        <input type="text" name="allergy_concern" placeholder="Allergy Concern" required>
+        <button type="submit">Add Suggestion</button>
+    </form>
+    <ul>
+        {% for suggestion in suggestions %}
+        <li>{{ suggestion['customer_name'] }} suggests {{ suggestion['flavor_suggestion'] }} (Allergy: {{ suggestion['allergy_concern'] }})</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('index') }}">Seasonal Flavors</a> |
+    <a href="{{ url_for('inventory') }}">Ingredient Inventory

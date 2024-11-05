@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chocolate House - Seasonal Flavors</title>
+</head>
+<body>
+    <h1>Seasonal Flavors</h1>
+    <form method="POST" action="{{ url_for('add_flavor') }}">
+        <input type="text" name="flavor_name" placeholder="Flavor Name" required>
+        <input type="text" name="description" placeholder="Description" required>
+        <input type="text" name="season" placeholder="Season" required>
+        <button type="submit">Add Flavor</button>
+    </form>
+    <ul>
+        {% for flavor in flavors %}
+        <li>{{ flavor['flavor_name'] }} - {{ flavor['description'] }} ({{ flavor['season'] }})</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('inventory') }}">Ingredient Inventory</a> |
+    <a href="{{ url_for('suggestions') }}">Customer Suggestions</a>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</body>
+</html>
